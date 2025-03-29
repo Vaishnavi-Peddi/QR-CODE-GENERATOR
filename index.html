@@ -13,18 +13,33 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
+            background-color: #f0f8ff; /* Light blue background */
         }
         .container {
             text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         input {
             margin: 10px;
             padding: 10px;
             font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
         button {
             padding: 10px 20px;
             font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
         }
         .message {
             margin-top: 20px;
@@ -35,7 +50,7 @@
 <body>
     <div class="container">
         <h1>Enter Password to Continue</h1>
-        <input type="password" id="password" placeholder="Password">
+        <input type="password" id="password" placeholder="Password" onkeydown="handleKeyPress(event)">
         <button onclick="checkPassword()">Submit</button>
         <div class="message" id="message"></div>
     </div>
@@ -50,6 +65,12 @@
                 window.location.href = targetUrl;
             } else {
                 messageDiv.textContent = 'Incorrect password. Please try again.';
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
             }
         }
     </script>
